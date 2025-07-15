@@ -1,5 +1,65 @@
 # Stock Dependencies for WooCommerce Plugin
 
+# Stock Dependencies for WooCommerce
+
+This plugin adds the ability to manage and check stock dependencies for WooCommerce products. A product's available stock can depend on the stock of other products, useful for managing bundles, kits, or other scenarios where multiple products share inventory.
+
+---
+
+## 🛠️ Recent Fixes & Update
+
+**July 2025 Update**
+
+- **Fixed**: Fatal errors caused by improper use of `intdiv()` when dependency quantities were not integers or were zero. All plugin code now safely casts arguments to integers and avoids division by zero, preventing site crashes.
+- **Compatibility**: Confirmed working with WooCommerce **8.9.x** and WordPress **6.6.x** as of July 2025.
+
+### What Was Wrong
+
+Previously, the plugin would throw a fatal error like:
+```
+Uncaught TypeError: intdiv(): Argument #2 ($num2) must be of type int, string given
+```
+This occurred when dependency quantities were missing, empty, or not properly cast to integers, or when a zero value was used (causing a division by zero).
+
+### What Was Fixed
+
+- All uses of `intdiv()` now cast both arguments to integers.
+- Division by zero is explicitly avoided; if a dependency quantity is zero or missing, the plugin now treats the dependent product as out of stock (or sets quantity to zero).
+- The code is more robust and will not break your site if product meta is malformed.
+- Full code review for type safety related to stock calculations.
+
+---
+
+## Compatibility
+
+- **WooCommerce**: 8.9.x and later (tested as of July 2025)
+- **WordPress**: 6.6.x and later
+
+---
+
+## Usage
+
+Add stock dependencies via the product edit screen, either for simple products or variations. The plugin will automatically compute available stock based on the lowest possible quantity from all dependencies.
+
+If you run into issues with stock levels, clear plugin transients from the Tools > Stock Dependencies menu.
+
+---
+
+## Contributing
+
+Feel free to fork and open pull requests! If you encounter bugs, please open an issue with as much detail as possible.
+
+---
+
+## License
+
+GPL2 or later
+
+---
+
+*This plugin is maintained by [djaysan](https://github.com/djaysan) and contributors. The July 2025 update focused on reliability and WooCommerce compatibility.*
+
+
 ## Overview
 
 With Stock Dependencies for WooCommerce, you can make the products and
