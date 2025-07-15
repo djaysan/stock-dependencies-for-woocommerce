@@ -1,7 +1,5 @@
 # Stock Dependencies for WooCommerce Plugin
 
-# Stock Dependencies for WooCommerce
-
 This plugin adds the ability to manage and check stock dependencies for WooCommerce products. A product's available stock can depend on the stock of other products, useful for managing bundles, kits, or other scenarios where multiple products share inventory.
 
 ---
